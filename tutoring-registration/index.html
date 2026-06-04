@@ -4,174 +4,114 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Tutoring Agreement | Milton Flusk</title>
     <meta name="description"
         content="Private tutoring terms, expectations, communication structure, attendance notes, and agreement details for Milton Flusk tutoring support." />
-
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css" />
 </head>
 
-<body class="bg-[#0b0b0b] text-white">
-    <header class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-xl">
-        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <a href="../index.html" class="text-lg font-bold">
-                Milton<span class="text-[#c6a15b]">Flusk</span>
+<body>
+    <header class="site-header">
+        <div class="shell site-nav">
+            <a class="brand" href="../index.html" aria-label="Milton Flusk home">
+                <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <circle class="mark-ring" cx="50" cy="50" r="43"></circle>
+                    <polygon class="mark-left" points="7,50 43,29 43,71"></polygon>
+                    <polygon class="mark-right" points="93,50 57,29 57,71"></polygon>
+                    <rect class="mark-line" x="49" y="27" width="2.5" height="46"></rect>
+                </svg>
+                <span>Milton<span>Flusk</span></span>
             </a>
-
-            <nav class="hidden items-center gap-8 text-sm text-white/75 md:flex">
-                <a href="../index.html">Home</a>
+            <nav class="nav-links" data-nav-links aria-label="Primary navigation">
                 <a href="../tutoring/index.html">Tutoring</a>
                 <a href="../research/index.html">Research</a>
-                <a href="../market-lab/index.html">Market Lab</a>
                 <a href="../portfolio/index.html">Portfolio</a>
-                <a href="../tutoring-registration/index.html">Register</a>
-                <a href="../tutoring-agreement/index.html" class="text-[#c6a15b]">Agreement</a>
+                <a href="../market-lab/index.html">Market Lab</a>
+                <a href="../disclosures/index.html">Disclosures</a>
             </nav>
+            <a class="nav-cta" href="../tutoring-agreement/index.html">Register</a>
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false"
+                aria-label="Toggle navigation"><span></span><span></span><span></span></button>
         </div>
     </header>
 
-    <main class="pt-28">
-        <section class="mx-auto max-w-5xl px-6 py-20">
-            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#c6a15b]">
-                Tutoring Agreement
-            </p>
-
-            <h1 class="mt-5 text-5xl font-extrabold tracking-tight">
-                Private Tutoring Terms and Expectations
-            </h1>
-
-            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/70">
-                This agreement outlines the structure, expectations and responsibilities associated with private
-                tutoring support provided by Milton Flusk.
-            </p>
-
-            <div class="mt-14 space-y-8">
-                <!-- Section -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">1. Tutoring Structure</h2>
-
-                    <div class="mt-5 space-y-4 text-white/70 leading-8">
-                        <p>
-                            Tutoring sessions are structured around curriculum alignment, conceptual understanding,
-                            worked examples and guided practice.
-                        </p>
-
-                        <p>
-                            Sessions may include:
-                        </p>
-
-                        <ul class="list-disc space-y-2 pl-6">
-                            <li>Homework assistance</li>
-                            <li>Exam preparation</li>
-                            <li>Revision sessions</li>
-                            <li>Baseline assessments</li>
-                            <li>Targeted gap intervention</li>
-                        </ul>
-                    </div>
+    <main class="page-main">
+        <section class="shell hero compact">
+            <div class="hero-copy">
+                <p class="eyebrow">Tutoring Agreement</p>
+                <h1>Clear expectations before tutoring begins.</h1>
+                <p class="lead">
+                    The agreement keeps the support structure simple: attend consistently, practise between sessions,
+                    communicate early, and use feedback to guide the next step.
+                </p>
+                <div class="actions">
+                    <a class="btn" href="../tutoring-agreement/index.html">Proceed to Registration</a>
+                    <a class="btn-secondary" href="../tutoring/index.html">Tutoring Overview</a>
                 </div>
-
-                <!-- Section -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">2. Student Responsibilities</h2>
-
-                    <div class="mt-5 space-y-4 text-white/70 leading-8">
-                        <p>
-                            Learners are expected to:
-                        </p>
-
-                        <ul class="list-disc space-y-2 pl-6">
-                            <li>Attend sessions punctually</li>
-                            <li>Bring the required learning materials</li>
-                            <li>Complete assigned homework</li>
-                            <li>Communicate academic difficulties honestly</li>
-                            <li>Participate actively during sessions</li>
-                        </ul>
-                    </div>
+            </div>
+            <div class="graphic-panel" aria-label="Animated agreement process graphic">
+                <canvas data-live-graphic="orbit"></canvas>
+                <div class="graphic-overlay">
+                    <p class="graphic-title">Agreement loop</p>
+                    <p class="graphic-caption">Attendance, practice, feedback, communication.</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Section -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">3. Parent / Guardian Expectations</h2>
-
-                    <div class="mt-5 space-y-4 text-white/70 leading-8">
-                        <p>
-                            Parents, guardians or sponsors are encouraged to:
-                        </p>
-
-                        <ul class="list-disc space-y-2 pl-6">
-                            <li>Support consistency and accountability</li>
-                            <li>Monitor homework and revision habits</li>
-                            <li>Communicate scheduling conflicts in advance</li>
-                            <li>Review progress feedback when provided</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Section -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">4. Communication and Feedback</h2>
-
-                    <div class="mt-5 space-y-4 text-white/70 leading-8">
-                        <p>
-                            Progress feedback may include comments on:
-                        </p>
-
-                        <ul class="list-disc space-y-2 pl-6">
-                            <li>Work ethic</li>
-                            <li>Participation</li>
-                            <li>Technical understanding</li>
-                            <li>Homework completion</li>
-                            <li>Areas requiring improvement</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Section -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">5. Scheduling</h2>
-
-                    <div class="mt-5 space-y-4 text-white/70 leading-8">
-                        <p>
-                            Session scheduling is arranged according to availability and academic priorities.
-                        </p>
-
-                        <p>
-                            Where possible, reasonable notice should be given for cancellations or rescheduling
-                            requests.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Section -->
-                <div class="rounded-3xl border border-[#c6a15b]/30 bg-[#c6a15b]/10 p-8">
-                    <h2 class="text-2xl font-bold">Agreement Confirmation</h2>
-
-                    <p class="mt-5 leading-8 text-white/80">
-                        Submission of the tutoring registration form constitutes acknowledgement and acceptance of this
-                        tutoring agreement and support structure.
+        <section class="shell section">
+            <div class="grid two">
+                <article class="panel accent">
+                    <span class="tag">1. Tutoring structure</span>
+                    <h3>Sessions and focus</h3>
+                    <p>
+                        Sessions are structured around curriculum alignment, conceptual understanding, worked examples,
+                        guided practice, and revision planning.
                     </p>
+                </article>
+                <article class="panel">
+                    <span class="tag">2. Learner expectations</span>
+                    <h3>Preparation and effort</h3>
+                    <p>
+                        Learners are expected to arrive prepared, bring required materials, complete agreed practice,
+                        ask questions, and attempt tasks between sessions.
+                    </p>
+                </article>
+                <article class="panel teal">
+                    <span class="tag teal">3. Parent communication</span>
+                    <h3>Useful feedback</h3>
+                    <p>
+                        Parents or guardians receive feedback on effort, technical gaps, homework completion, and the
+                        next learning focus where appropriate.
+                    </p>
+                </article>
+                <article class="panel">
+                    <span class="tag">4. Scheduling</span>
+                    <h3>Consistency matters</h3>
+                    <p>
+                        Scheduling, cancellations, and payment arrangements should be confirmed clearly before regular
+                        support begins.
+                    </p>
+                </article>
+            </div>
+        </section>
 
-                    <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-                        <a href="../tutoring-registration/index.html"
-                            class="rounded-full bg-[#c6a15b] px-7 py-3 text-center font-semibold text-black transition hover:bg-[#d8b76f]">
-                            Proceed to Registration
-                        </a>
-
-                        <a href="../tutoring/index.html"
-                            class="rounded-full border border-white/20 px-7 py-3 text-center font-semibold text-white transition hover:bg-white hover:text-black">
-                            Back to Tutoring
-                        </a>
-                    </div>
-                </div>
+        <section class="shell section">
+            <div class="notice">
+                Submitting the registration form confirms that the parent, guardian, or sponsor has reviewed the
+                tutoring agreement and understands the support structure.
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-white/10 bg-black py-8">
-        <div class="mx-auto max-w-7xl px-6 text-sm text-white/50">
-            © 2026 Milton Flusk. All rights reserved.
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <p>© 2026 Milton Flusk. Tutoring agreement.</p>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Home</a>
+                <a href="../tutoring/index.html">Tutoring</a>
+                <a href="../tutoring-agreement/index.html">Register</a>
+                <a href="../research/index.html">Research</a>
+            </nav>
         </div>
     </footer>
 

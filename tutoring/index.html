@@ -4,138 +4,138 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Private Tutoring | Milton Flusk</title>
     <meta name="description"
         content="Private Mathematics and Physical Sciences tutoring with structured support, practice, and progress feedback from Milton Flusk." />
-
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css" />
 </head>
 
-<body class="bg-[#0b0b0b] text-white">
-    <header class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-xl">
-        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <a href="../index.html" class="text-lg font-bold">
-                Milton<span class="text-[#c6a15b]">Flusk</span>
+<body>
+    <header class="site-header">
+        <div class="shell site-nav">
+            <a class="brand" href="../index.html" aria-label="Milton Flusk home">
+                <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <circle class="mark-ring" cx="50" cy="50" r="43"></circle>
+                    <polygon class="mark-left" points="7,50 43,29 43,71"></polygon>
+                    <polygon class="mark-right" points="93,50 57,29 57,71"></polygon>
+                    <rect class="mark-line" x="49" y="27" width="2.5" height="46"></rect>
+                </svg>
+                <span>Milton<span>Flusk</span></span>
             </a>
-
-            <nav class="hidden items-center gap-8 text-sm text-white/75 md:flex">
-                <a href="../index.html">Home</a>
-                <a href="../tutoring/index.html" class="text-[#c6a15b]">Tutoring</a>
+            <nav class="nav-links" data-nav-links aria-label="Primary navigation">
+                <a href="../tutoring/index.html" aria-current="page">Tutoring</a>
                 <a href="../research/index.html">Research</a>
-                <a href="../market-lab/index.html">Market Lab</a>
                 <a href="../portfolio/index.html">Portfolio</a>
-                <a href="../tutoring-registration/index.html">Register</a>
-                <a href="../tutoring-agreement/index.html">Agreement</a>
+                <a href="../market-lab/index.html">Market Lab</a>
+                <a href="../disclosures/index.html">Disclosures</a>
             </nav>
-
-            <a href="../tutoring-registration/index.html"
-                class="hidden rounded-full bg-[#c6a15b] px-5 py-2 text-sm font-semibold text-black md:inline-flex">
-                Register
-            </a>
+            <a class="nav-cta" href="../tutoring-agreement/index.html">Register</a>
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false"
+                aria-label="Toggle navigation"><span></span><span></span><span></span></button>
         </div>
     </header>
 
-    <main class="pt-28">
-        <section class="mx-auto max-w-7xl px-6 py-20">
-            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#c6a15b]">
-                Private Tutoring
-            </p>
-
-            <h1 class="mt-5 max-w-4xl text-5xl font-extrabold tracking-tight">
-                Mathematics and Physical Sciences support with structure and accountability.
-            </h1>
-
-            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/70">
-                Tutoring is designed to help learners build confidence, close knowledge gaps and prepare properly for
-                tests and examinations.
-                Each learner is supported through explanation, practice, homework and feedback.
-            </p>
-
-            <div class="mt-10 flex flex-col gap-4 sm:flex-row">
-                <a href="../tutoring-registration/index.html"
-                    class="rounded-full bg-[#c6a15b] px-7 py-3 text-center font-semibold text-black">
-                    Start Registration
-                </a>
-
-                <a href="../tutoring-agreement/index.html"
-                    class="rounded-full border border-white/20 px-7 py-3 text-center font-semibold">
-                    View Agreement
-                </a>
+    <main class="page-main">
+        <section class="shell hero compact">
+            <div class="hero-copy">
+                <p class="eyebrow">Academic Support</p>
+                <h1>Mathematics and Physical Sciences support with structure.</h1>
+                <p class="lead">
+                    Tutoring is built around diagnosing gaps, explaining ideas clearly, practising deliberately, and
+                    giving useful feedback to learners and parents.
+                </p>
+                <div class="actions">
+                    <a class="btn" href="../tutoring-agreement/index.html">Start Registration</a>
+                    <a class="btn-secondary" href="../tutoring-registration/index.html">Read Agreement</a>
+                </div>
             </div>
-        </section>
-
-        <section class="border-y border-white/10 bg-[#101010] py-20">
-            <div class="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-3">
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-7">
-                    <h2 class="text-2xl font-bold">Mathematics</h2>
-                    <p class="mt-4 text-sm leading-7 text-white/65">
-                        Algebra, functions, graphs, trigonometry, calculus, Euclidean geometry, analytical geometry,
-                        sequences and exam preparation.
-                    </p>
-                </div>
-
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-7">
-                    <h2 class="text-2xl font-bold">Physical Sciences</h2>
-                    <p class="mt-4 text-sm leading-7 text-white/65">
-                        Mechanics, Newton’s Laws, vertical projectile motion, momentum, work-energy-power, electricity,
-                        circuits, rates and electrochemistry.
-                    </p>
-                </div>
-
-                <div class="rounded-3xl border border-white/10 bg-black/40 p-7">
-                    <h2 class="text-2xl font-bold">Feedback</h2>
-                    <p class="mt-4 text-sm leading-7 text-white/65">
-                        Parents receive clear feedback on engagement, work ethic, technical gaps, homework completion
-                        and the next learning focus.
-                    </p>
+            <div class="graphic-panel" aria-label="Animated tutoring progress graphic">
+                <canvas data-live-graphic="bars"></canvas>
+                <div class="graphic-overlay">
+                    <p class="graphic-title">Progress model</p>
+                    <p class="graphic-caption">Concepts, practice, feedback, and revision cycles.</p>
                 </div>
             </div>
         </section>
 
-        <section class="mx-auto max-w-7xl px-6 py-20">
-            <h2 class="text-4xl font-bold">How tutoring sessions are approached</h2>
-
-            <div class="mt-10 grid gap-6 md:grid-cols-4">
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                    <span class="text-3xl font-bold text-[#c6a15b]">01</span>
-                    <h3 class="mt-4 font-semibold">Baseline</h3>
-                    <p class="mt-3 text-sm leading-6 text-white/65">
-                        Identify strengths, gaps and the learner’s current level.
-                    </p>
+        <section class="shell section">
+            <div class="section-head">
+                <div>
+                    <p class="eyebrow">Subjects</p>
+                    <h2>Focused help where the pressure usually sits.</h2>
                 </div>
+                <p>Support is practical, exam-aware, and aimed at helping learners explain the method themselves.</p>
+            </div>
+            <div class="grid three">
+                <article class="panel accent">
+                    <span class="tag">Mathematics</span>
+                    <h3>Core problem solving</h3>
+                    <p>Algebra, functions, graphs, trigonometry, calculus, geometry, sequences, and exam revision.</p>
+                </article>
+                <article class="panel teal">
+                    <span class="tag teal">Physical Sciences</span>
+                    <h3>Mechanics and electricity</h3>
+                    <p>Newton's laws, projectile motion, momentum, work-energy-power, circuits, and electrochemistry.</p>
+                </article>
+                <article class="panel">
+                    <span class="tag green">Feedback</span>
+                    <h3>Visible progress</h3>
+                    <p>Parents receive concise updates on engagement, technical gaps, homework, and next focus areas.</p>
+                </article>
+            </div>
+        </section>
 
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                    <span class="text-3xl font-bold text-[#c6a15b]">02</span>
-                    <h3 class="mt-4 font-semibold">Explanation</h3>
-                    <p class="mt-3 text-sm leading-6 text-white/65">
-                        Break down theory and methods in a simple, usable way.
-                    </p>
+        <section class="shell section split">
+            <div>
+                <p class="eyebrow">Session approach</p>
+                <h2>Repeatable, calm, and measurable.</h2>
+                <p class="lead">
+                    The tutoring process is designed to reduce confusion first, then build fluency through guided
+                    practice and independent attempts.
+                </p>
+            </div>
+            <div class="feature-list">
+                <div class="feature-row">
+                    <div class="feature-index">01</div>
+                    <div>
+                        <h3>Baseline</h3>
+                        <p>Identify the learner's current level, strengths, and most costly gaps.</p>
+                    </div>
                 </div>
-
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                    <span class="text-3xl font-bold text-[#c6a15b]">03</span>
-                    <h3 class="mt-4 font-semibold">Practice</h3>
-                    <p class="mt-3 text-sm leading-6 text-white/65">
-                        Work through examples, homework and exam-style questions.
-                    </p>
+                <div class="feature-row">
+                    <div class="feature-index">02</div>
+                    <div>
+                        <h3>Explanation</h3>
+                        <p>Break down theory into a usable method with worked examples.</p>
+                    </div>
                 </div>
-
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
-                    <span class="text-3xl font-bold text-[#c6a15b]">04</span>
-                    <h3 class="mt-4 font-semibold">Feedback</h3>
-                    <p class="mt-3 text-sm leading-6 text-white/65">
-                        Track progress and set the next focus area clearly.
-                    </p>
+                <div class="feature-row">
+                    <div class="feature-index">03</div>
+                    <div>
+                        <h3>Practice</h3>
+                        <p>Move from guided questions to exam-style tasks and homework accountability.</p>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="feature-index">04</div>
+                    <div>
+                        <h3>Feedback</h3>
+                        <p>Summarise what improved, what remains weak, and what to do next.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-white/10 bg-black py-8">
-        <div class="mx-auto max-w-7xl px-6 text-sm text-white/50">
-            © 2026 Milton Flusk. All rights reserved.
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <p>© 2026 Milton Flusk. Structured academic support.</p>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Home</a>
+                <a href="../tutoring-agreement/index.html">Register</a>
+                <a href="../tutoring-registration/index.html">Agreement</a>
+                <a href="../research/index.html">Research</a>
+            </nav>
         </div>
     </footer>
 

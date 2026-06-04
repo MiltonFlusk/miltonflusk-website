@@ -4,213 +4,121 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Tutoring Registration | Milton Flusk</title>
     <meta name="description"
         content="Student registration form for Milton Flusk private tutoring, including learner details, parent contact details, subjects, and availability." />
-
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="../css/style.css" />
 </head>
 
-<body class="bg-[#0b0b0b] text-white">
-    <header class="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur-xl">
-        <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <a href="../index.html" class="text-lg font-bold">
-                Milton<span class="text-[#c6a15b]">Flusk</span>
+<body>
+    <header class="site-header">
+        <div class="shell site-nav">
+            <a class="brand" href="../index.html" aria-label="Milton Flusk home">
+                <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+                    <circle class="mark-ring" cx="50" cy="50" r="43"></circle>
+                    <polygon class="mark-left" points="7,50 43,29 43,71"></polygon>
+                    <polygon class="mark-right" points="93,50 57,29 57,71"></polygon>
+                    <rect class="mark-line" x="49" y="27" width="2.5" height="46"></rect>
+                </svg>
+                <span>Milton<span>Flusk</span></span>
             </a>
-
-            <nav class="hidden items-center gap-8 text-sm text-white/75 md:flex">
-                <a href="../index.html">Home</a>
+            <nav class="nav-links" data-nav-links aria-label="Primary navigation">
                 <a href="../tutoring/index.html">Tutoring</a>
                 <a href="../research/index.html">Research</a>
-                <a href="../market-lab/index.html">Market Lab</a>
                 <a href="../portfolio/index.html">Portfolio</a>
-                <a href="../tutoring-registration/index.html" class="text-[#c6a15b]">Register</a>
-                <a href="../tutoring-agreement/index.html">Agreement</a>
+                <a href="../market-lab/index.html">Market Lab</a>
+                <a href="../disclosures/index.html">Disclosures</a>
             </nav>
+            <a class="nav-cta" href="../tutoring-registration/index.html">Agreement</a>
+            <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false"
+                aria-label="Toggle navigation"><span></span><span></span><span></span></button>
         </div>
     </header>
 
-    <main class="pt-28">
-        <section class="mx-auto max-w-5xl px-6 py-20">
-            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#c6a15b]">
-                Tutoring Registration
-            </p>
+    <main class="page-main">
+        <section class="shell hero compact">
+            <div class="hero-copy">
+                <p class="eyebrow">Tutoring Registration</p>
+                <h1>Start with the learner details and support goals.</h1>
+                <p class="lead">
+                    Use this form to share student details, subjects, availability, academic challenges, and the support
+                    structure needed before tutoring begins.
+                </p>
+            </div>
+            <div class="graphic-panel" aria-label="Animated registration progress graphic">
+                <canvas data-live-graphic="bars"></canvas>
+                <div class="graphic-overlay">
+                    <p class="graphic-title">Onboarding flow</p>
+                    <p class="graphic-caption">Student context, parent contact, academic focus, agreement.</p>
+                </div>
+            </div>
+        </section>
 
-            <h1 class="mt-5 text-5xl font-extrabold tracking-tight">
-                Student Registration Form
-            </h1>
-
-            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/70">
-                Submission of this form indicates that the parent, guardian or sponsor has reviewed and accepts the
-                tutoring agreement and support structure.
-            </p>
-
-            <!-- FORM -->
-            <form name="tutoring-registration" method="POST" data-netlify="true" class="mt-14 space-y-10">
+        <section class="shell section">
+            <form name="tutoring-registration" method="POST" data-netlify="true" class="panel form-grid">
                 <input type="hidden" name="form-name" value="tutoring-registration" />
 
-                <!-- Student Information -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">Student Information</h2>
-
-                    <div class="mt-8 grid gap-6 md:grid-cols-2">
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Student Full Name
-                            </label>
-
-                            <input type="text" name="student-name" required
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Grade
-                            </label>
-
-                            <input type="text" name="grade" required
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                School
-                            </label>
-
-                            <input type="text" name="school"
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Subject(s)
-                            </label>
-
-                            <input type="text" name="subjects" placeholder="Mathematics, Physical Sciences..."
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-                    </div>
+                <div class="field">
+                    <label for="student-name">Student name</label>
+                    <input id="student-name" name="student_name" type="text" required />
                 </div>
-
-                <!-- Parent Information -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">
-                        Parent / Guardian / Sponsor
-                    </h2>
-
-                    <div class="mt-8 grid gap-6 md:grid-cols-2">
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Full Name
-                            </label>
-
-                            <input type="text" name="guardian-name" required
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Phone Number
-                            </label>
-
-                            <input type="tel" name="phone" required
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-
-                        <div class="md:col-span-2">
-                            <label class="mb-2 block text-sm text-white/70">
-                                Email Address
-                            </label>
-
-                            <input type="email" name="email" required
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-                    </div>
+                <div class="field">
+                    <label for="grade">Grade</label>
+                    <input id="grade" name="grade" type="text" placeholder="Grade 8-12" required />
                 </div>
-
-                <!-- Academic Information -->
-                <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-8">
-                    <h2 class="text-2xl font-bold">Academic Details</h2>
-
-                    <div class="mt-8 space-y-6">
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Academic Challenges / Focus Areas
-                            </label>
-
-                            <textarea name="academic-challenges" rows="5"
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]"></textarea>
-                        </div>
-
-                        <div class="grid gap-6 md:grid-cols-2">
-                            <div>
-                                <label class="mb-2 block text-sm text-white/70">
-                                    Preferred Tutoring Days
-                                </label>
-
-                                <input type="text" name="preferred-days" placeholder="Monday, Wednesday..."
-                                    class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                            </div>
-
-                            <div>
-                                <label class="mb-2 block text-sm text-white/70">
-                                    Upcoming Test / Exam Date
-                                </label>
-
-                                <input type="date" name="exam-date"
-                                    class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                            </div>
-                        </div>
-                    </div>
+                <div class="field">
+                    <label for="parent-name">Parent / guardian name</label>
+                    <input id="parent-name" name="parent_name" type="text" required />
                 </div>
-
-                <!-- Agreement -->
-                <div class="rounded-3xl border border-[#c6a15b]/30 bg-[#c6a15b]/10 p-8">
-                    <h2 class="text-2xl font-bold">Agreement Confirmation</h2>
-
-                    <div class="mt-6 flex items-start gap-4">
-                        <input type="checkbox" name="agreement" required class="mt-1 h-5 w-5" />
-
-                        <p class="text-sm leading-7 text-white/80">
-                            I confirm that I have read and agree to the tutoring structure,
-                            expectations and agreement provided by Milton Flusk.
-                        </p>
-                    </div>
-
-                    <div class="mt-8 grid gap-6 md:grid-cols-2">
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Digital Signature
-                            </label>
-
-                            <input type="text" name="signature" required
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-
-                        <div>
-                            <label class="mb-2 block text-sm text-white/70">
-                                Date
-                            </label>
-
-                            <input type="date" name="date"
-                                class="w-full rounded-2xl border border-white/10 bg-black/40 px-5 py-4 text-white outline-none focus:border-[#c6a15b]" />
-                        </div>
-                    </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" required />
                 </div>
-
-                <button type="submit"
-                    class="rounded-full bg-[#c6a15b] px-8 py-4 font-semibold text-black transition hover:bg-[#d8b76f]">
-                    Submit Registration
-                </button>
+                <div class="field">
+                    <label for="phone">Phone</label>
+                    <input id="phone" name="phone" type="tel" />
+                </div>
+                <div class="field">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Select subject</option>
+                        <option>Mathematics</option>
+                        <option>Physical Sciences</option>
+                        <option>Mathematics and Physical Sciences</option>
+                    </select>
+                </div>
+                <div class="field full">
+                    <label for="availability">Preferred days / times</label>
+                    <textarea id="availability" name="availability"
+                        placeholder="Share preferred days, times, and whether remote sessions are suitable."></textarea>
+                </div>
+                <div class="field full">
+                    <label for="goals">Academic challenges and goals</label>
+                    <textarea id="goals" name="goals"
+                        placeholder="Which topics feel difficult? Is there an exam or deadline coming up?"></textarea>
+                </div>
+                <div class="field full">
+                    <label>
+                        <input type="checkbox" name="agreement_acknowledged" required />
+                        I have reviewed the tutoring agreement and understand the support expectations.
+                    </label>
+                </div>
+                <div class="field full">
+                    <button class="btn" type="submit">Submit Registration</button>
+                </div>
             </form>
         </section>
     </main>
 
-    <footer class="border-t border-white/10 bg-black py-8">
-        <div class="mx-auto max-w-7xl px-6 text-sm text-white/50">
-            © 2026 Milton Flusk. All rights reserved.
+    <footer class="site-footer">
+        <div class="shell footer-inner">
+            <p>© 2026 Milton Flusk. Tutoring registration.</p>
+            <nav class="footer-links" aria-label="Footer navigation">
+                <a href="../index.html">Home</a>
+                <a href="../tutoring/index.html">Tutoring</a>
+                <a href="../tutoring-registration/index.html">Agreement</a>
+                <a href="../portfolio/index.html">Portfolio</a>
+            </nav>
         </div>
     </footer>
 
