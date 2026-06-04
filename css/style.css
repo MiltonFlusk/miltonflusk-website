@@ -274,6 +274,10 @@ canvas {
     min-height: 410px;
 }
 
+.brand-hero {
+    min-height: 620px;
+}
+
 .hero-copy {
     min-width: 0;
 }
@@ -446,6 +450,30 @@ h4 {
     padding: 72px 0;
 }
 
+.intro-band {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.identity-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid var(--line);
+    background: var(--line);
+}
+
+.identity-strip span {
+    min-height: 96px;
+    display: flex;
+    align-items: center;
+    background: rgba(10, 10, 10, 0.96);
+    color: var(--silver);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 18px;
+}
+
 .mission-panel,
 .next-step-panel {
     display: grid;
@@ -528,9 +556,34 @@ h4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.grid.three,
-.grid.four {
+.grid.three {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid.four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid.five {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.compact-grid {
+    gap: 14px;
+}
+
+.focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.focus-grid span {
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--silver);
+    font-weight: 750;
+    padding: 14px 16px;
 }
 
 .journey-grid {
@@ -760,6 +813,53 @@ h4 {
     color: var(--blue-2);
 }
 
+.case-study {
+    display: grid;
+    gap: 26px;
+}
+
+.case-study-head {
+    max-width: 780px;
+}
+
+.case-study-head p {
+    color: var(--muted);
+}
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1px;
+    border: 1px solid var(--line);
+    background: var(--line);
+}
+
+.case-study-grid article {
+    background: rgba(10, 10, 10, 0.76);
+    padding: 18px;
+}
+
+.case-study-grid h3 {
+    margin-bottom: 8px;
+    color: var(--blue-2);
+    font-size: 17px;
+}
+
+.case-study-grid p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.callout-panel {
+    display: grid;
+    gap: 14px;
+}
+
+.callout-panel p {
+    max-width: 760px;
+}
+
 .table-panel {
     overflow-x: auto;
 }
@@ -853,7 +953,7 @@ h4 {
 .field select:focus,
 .field textarea:focus {
     border-color: var(--blue);
-    box-shadow: 0 0 0 3px rgba(24, 168, 255, 0.16);
+    box-shadow: 0 0 0 3px rgba(201, 169, 89, 0.16);
 }
 
 .notice {
@@ -947,13 +1047,17 @@ h4 {
 
     .hero,
     .hero.compact,
+    .brand-hero,
     .mission-panel,
     .next-step-panel,
     .split,
     .journey-grid,
+    .identity-strip,
+    .case-study-grid,
     .grid.two,
     .grid.three,
-    .grid.four {
+    .grid.four,
+    .grid.five {
         grid-template-columns: 1fr;
     }
 
@@ -993,6 +1097,7 @@ h4 {
     .form-grid,
     .timeline-item,
     .spec-row,
+    .focus-grid,
     .trait-grid,
     .language-row {
         grid-template-columns: 1fr;
