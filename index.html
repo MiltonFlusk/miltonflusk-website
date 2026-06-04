@@ -13,6 +13,8 @@
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <header class="site-header">
         <div class="shell site-nav">
             <a class="brand" href="index.html" aria-label="Milton Flusk home">
@@ -39,32 +41,64 @@
         </div>
     </header>
 
-    <main class="page-main">
+    <div class="experience-strip" aria-label="Experience controls">
+        <div class="shell experience-strip-inner">
+            <span class="experience-label">Experience controls</span>
+            <div class="control-group">
+                <button class="control-button" type="button" data-experience-toggle="large-type"
+                    aria-pressed="false">Large text</button>
+                <button class="control-button" type="button" data-experience-toggle="calm-motion"
+                    aria-pressed="false">Calm motion</button>
+            </div>
+            <span class="path-memory" data-path-memory data-default-text="Choose a path to begin.">Choose a path to
+                begin.</span>
+        </div>
+    </div>
+
+    <main class="page-main" id="main-content">
         <section class="shell hero">
             <div class="hero-copy">
                 <p class="eyebrow">Academic Support / Quantitative Research / Market Education</p>
-                <h1>Structured learning with a quantitative edge.</h1>
+                <h1>Choose your path. Learn clearly. Build momentum.</h1>
                 <p class="lead">
-                    Milton Flusk brings together Mathematics and Physical Sciences tutoring, quantitative finance
-                    research direction, data and risk projects, and careful market education without trading hype.
+                    Milton Flusk is built like a readable learning world: tutoring for school pressure, quantitative
+                    projects for professional growth, and market education with safety rails.
                 </p>
+                <div class="path-launch" aria-label="Choose your Milton Flusk path">
+                    <a class="path-choice accent" href="tutoring/index.html" data-path-choice="Academic Support">
+                        <span>Path 1</span>
+                        <strong>Academic Support</strong>
+                        <span>Maths and Physical Sciences help.</span>
+                    </a>
+                    <a class="path-choice teal" href="research/index.html" data-path-choice="Quantitative Research">
+                        <span>Path 2</span>
+                        <strong>Quantitative Research</strong>
+                        <span>Risk, data, and modelling work.</span>
+                    </a>
+                    <a class="path-choice red" href="market-lab/index.html" data-path-choice="Market Education">
+                        <span>Path 3</span>
+                        <strong>Market Education</strong>
+                        <span>Paper-only index learning.</span>
+                    </a>
+                </div>
                 <div class="actions">
-                    <a class="btn" href="tutoring/index.html">View Tutoring</a>
-                    <a class="btn-secondary" href="research/index.html">Explore Research</a>
-                    <a class="btn-secondary" href="market-lab/index.html">Open Market Lab</a>
+                    <a class="btn" href="tutoring/index.html" data-path-choice="Academic Support">Start Tutoring
+                        Path</a>
+                    <a class="btn-secondary" href="mailto:info@miltonflusk.com?subject=Milton%20Flusk%20Enquiry">Ask
+                        a Question</a>
                 </div>
                 <div class="metrics-row" aria-label="Site focus metrics">
                     <div class="metric">
                         <strong data-count="3"></strong>
-                        <span>brand pillars</span>
+                        <span>clear paths</span>
                     </div>
                     <div class="metric">
-                        <strong data-count="2"></strong>
-                        <span>core school subjects</span>
+                        <strong>Live</strong>
+                        <span>procedural graphics</span>
                     </div>
                     <div class="metric">
-                        <strong>QF</strong>
-                        <span>research direction</span>
+                        <strong>Easy</strong>
+                        <span>reading controls</span>
                     </div>
                     <div class="metric">
                         <strong>0</strong>
@@ -77,50 +111,114 @@
                 <canvas data-live-graphic="field"></canvas>
                 <div class="graphic-overlay">
                     <p class="graphic-title">Live research field</p>
-                    <p class="graphic-caption">Procedural signal map, not market data or trading advice.</p>
+                    <p class="graphic-caption">Procedural learning map, not market data or trading advice.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="shell section mission-panel" aria-labelledby="today-mission">
+            <div>
+                <span class="tag green">Start in 30 seconds</span>
+                <h2 id="today-mission">Today's mission</h2>
+                <p>
+                    Pick one path, open one useful page, and take one next action. The site remembers your path on this
+                    device so coming back feels familiar.
+                </p>
+            </div>
+            <div class="mission-board" aria-label="Homepage mission checklist">
+                <button class="mission-check" type="button" data-mission-check="choose-path" aria-pressed="false">
+                    <span class="check-box" aria-hidden="true"></span>
+                    Choose a path
+                </button>
+                <button class="mission-check" type="button" data-mission-check="read-goal" aria-pressed="false">
+                    <span class="check-box" aria-hidden="true"></span>
+                    Read one page goal
+                </button>
+                <button class="mission-check" type="button" data-mission-check="next-action" aria-pressed="false">
+                    <span class="check-box" aria-hidden="true"></span>
+                    Take the next action
+                </button>
             </div>
         </section>
 
         <section class="shell section">
             <div class="section-head">
                 <div>
-                    <p class="eyebrow">What the site does</p>
-                    <h2>One brand, three useful paths.</h2>
+                    <p class="eyebrow">The journey map</p>
+                    <h2>Three paths, three kinds of progress.</h2>
                 </div>
-                <p>Each path has a distinct purpose, so tutoring, technical work, and market education do not blur into
-                    one generic offer.</p>
+                <p>Each route has its own objective, visual rhythm, and next move. Kids can find help fast, adults can
+                    scan clearly, and employers can see direction.</p>
             </div>
 
             <div class="grid three">
-                <article class="panel accent">
-                    <span class="tag">Academic Support</span>
-                    <h3>Mathematics and Physical Sciences</h3>
-                    <p>
-                        CAPS-aligned support with clear explanations, homework accountability, exam preparation, and
-                        parent-facing feedback.
-                    </p>
-                    <a class="btn-secondary" href="tutoring/index.html">Tutoring details</a>
+                <article class="panel accent path-card">
+                    <div>
+                        <div class="path-topline">
+                            <span class="tag">Path 1</span>
+                            <span class="level-tag">School mode</span>
+                        </div>
+                        <h3>Academic Support</h3>
+                        <p>
+                            CAPS-aligned Mathematics and Physical Sciences support with clear explanations, practice,
+                            exam preparation, and parent-facing feedback.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="checkpoint-strip" aria-label="Academic checkpoints">
+                            <span class="step-chip">Diagnose</span>
+                            <span class="step-chip">Practice</span>
+                            <span class="step-chip">Improve</span>
+                        </div>
+                        <a class="btn-secondary" href="tutoring/index.html" data-path-choice="Academic Support">Enter
+                            path</a>
+                    </div>
                 </article>
 
-                <article class="panel teal">
-                    <span class="tag teal">Quantitative Research</span>
-                    <h3>Risk, statistics, and data systems</h3>
-                    <p>
-                        A professional research layer for risk modelling, data engineering, Python analysis, and
-                        explainable quantitative thinking.
-                    </p>
-                    <a class="btn-secondary" href="research/index.html">Research direction</a>
+                <article class="panel teal path-card">
+                    <div>
+                        <div class="path-topline">
+                            <span class="tag teal">Path 2</span>
+                            <span class="level-tag">Research mode</span>
+                        </div>
+                        <h3>Quantitative Research</h3>
+                        <p>
+                            A professional layer for risk modelling, data engineering, Python analysis, and explainable
+                            quantitative thinking.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="checkpoint-strip" aria-label="Research checkpoints">
+                            <span class="step-chip">Model</span>
+                            <span class="step-chip">Test</span>
+                            <span class="step-chip">Explain</span>
+                        </div>
+                        <a class="btn-secondary" href="research/index.html" data-path-choice="Quantitative Research">Enter
+                            path</a>
+                    </div>
                 </article>
 
-                <article class="panel red">
-                    <span class="tag red">Market Education</span>
-                    <h3>Index Market Lab</h3>
-                    <p>
-                        Beginner-friendly market structure education with paper-trading boundaries. No live execution,
-                        no brokerage connection, no signals.
-                    </p>
-                    <a class="btn-secondary" href="market-lab/index.html">Market Lab</a>
+                <article class="panel red path-card">
+                    <div>
+                        <div class="path-topline">
+                            <span class="tag red">Path 3</span>
+                            <span class="level-tag">Lab mode</span>
+                        </div>
+                        <h3>Index Market Lab</h3>
+                        <p>
+                            Beginner-friendly market structure education with paper-trading boundaries. No live
+                            execution, no brokerage connection, no signals.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="checkpoint-strip" aria-label="Market Lab checkpoints">
+                            <span class="step-chip">Context</span>
+                            <span class="step-chip">Risk</span>
+                            <span class="step-chip">Reflect</span>
+                        </div>
+                        <a class="btn-secondary" href="market-lab/index.html" data-path-choice="Market Education">Enter
+                            path</a>
+                    </div>
                 </article>
             </div>
         </section>
@@ -128,7 +226,7 @@
         <section class="shell section split">
             <div>
                 <p class="eyebrow">Operating method</p>
-                <h2>How Milton Flusk work is structured.</h2>
+                <h2>The same game loop, used seriously.</h2>
                 <p class="lead">
                     The same method applies across tutoring, research, and market education: define the problem, build
                     the model, test the work, communicate the limits.
@@ -187,7 +285,7 @@
 
     <footer class="site-footer">
         <div class="shell footer-inner">
-            <p>© 2026 Milton Flusk. Academic support, research, and education.</p>
+            <p>&copy; 2026 Milton Flusk. Academic support, research, and education.</p>
             <nav class="footer-links" aria-label="Footer navigation">
                 <a href="tutoring/index.html">Tutoring</a>
                 <a href="research/index.html">Research</a>
@@ -202,7 +300,8 @@
         <div id="chatbotBox">
             <div id="chatbotHeader">Milton Flusk Assistant</div>
             <div id="chatbotMessages">
-                <p><strong>Assistant:</strong> Ask about tutoring, research, portfolio work, or Market Lab.</p>
+                <p><strong>Assistant:</strong> Choose a path or ask about tutoring, research, portfolio work, or Market
+                    Lab.</p>
             </div>
             <div id="chatbotInputArea">
                 <input id="chatbotInput" type="text" placeholder="Ask a question..." />

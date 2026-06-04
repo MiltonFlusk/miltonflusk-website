@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="../css/style.css" />
 </head>
 
-<body>
+<body data-current-path="Market Education">
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
     <header class="site-header">
         <div class="shell site-nav">
             <a class="brand" href="../index.html" aria-label="Milton Flusk home">
@@ -35,14 +37,28 @@
         </div>
     </header>
 
-    <main class="page-main">
+    <div class="experience-strip" aria-label="Experience controls">
+        <div class="shell experience-strip-inner">
+            <span class="experience-label">Experience controls</span>
+            <div class="control-group">
+                <button class="control-button" type="button" data-experience-toggle="large-type"
+                    aria-pressed="false">Large text</button>
+                <button class="control-button" type="button" data-experience-toggle="calm-motion"
+                    aria-pressed="false">Calm motion</button>
+            </div>
+            <span class="path-memory" data-path-memory data-default-text="Choose a path to begin.">Choose a path to
+                begin.</span>
+        </div>
+    </div>
+
+    <main class="page-main" id="main-content">
         <section class="shell hero compact">
             <div class="hero-copy">
                 <p class="eyebrow">Disclosures</p>
-                <h1>Education first. Paper trading only.</h1>
+                <h1>The safety screen: education first, paper trading only.</h1>
                 <p class="lead">
-                    These notes define what Milton Flusk Market Lab provides, what it does not provide, and where users
-                    should be careful with financial-market content.
+                    These notes define what Milton Flusk Market Lab provides, what it does not provide, and where
+                    readers should slow down around financial-market content.
                 </p>
             </div>
             <div class="graphic-panel" aria-label="Animated disclosure risk graphic">
@@ -51,6 +67,23 @@
                     <p class="graphic-title">Boundary layer</p>
                     <p class="graphic-caption">Risk, uncertainty, and educational limits stay visible.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="shell section next-step-panel" aria-labelledby="disclosures-next-step">
+            <div>
+                <span class="tag red">Read this first</span>
+                <h2 id="disclosures-next-step">Nothing here is a command to trade.</h2>
+                <p>
+                    Market content can be useful for learning, but real financial decisions need personal judgement,
+                    risk awareness, and qualified professional advice where appropriate.
+                </p>
+            </div>
+            <div class="checkpoint-strip" aria-label="Disclosure checkpoints">
+                <span class="step-chip">No signals</span>
+                <span class="step-chip">No broker</span>
+                <span class="step-chip">No guarantees</span>
+                <span class="step-chip">No personalized advice</span>
             </div>
         </section>
 
@@ -128,7 +161,7 @@
 
     <footer class="site-footer">
         <div class="shell footer-inner">
-            <p>© 2026 Milton Flusk. Disclosures and risk boundaries.</p>
+            <p>&copy; 2026 Milton Flusk. Disclosures and risk boundaries.</p>
             <nav class="footer-links" aria-label="Footer navigation">
                 <a href="../index.html">Home</a>
                 <a href="../research/index.html">Research</a>

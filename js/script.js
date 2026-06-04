@@ -4,7 +4,10 @@
     "use strict";
 
     document.addEventListener("DOMContentLoaded", function () {
+        initExperienceControls();
         initMobileNav();
+        initPathMemory();
+        initMissionChecks();
         fillDateFields();
         initFadeIns();
         initFormSubmitStates();
@@ -34,6 +37,90 @@
         });
     }
 
+    function initExperienceControls() {
+        const modes = ["large-type", "calm-motion"];
+
+        modes.forEach(function (mode) {
+            document.body.classList.toggle(mode, readStoredValue(`mf-${mode}`) === "true");
+        });
+
+        document.querySelectorAll("[data-experience-toggle]").forEach(function (button) {
+            const mode = button.dataset.experienceToggle;
+
+            if (!modes.includes(mode)) {
+                return;
+            }
+
+            button.setAttribute("aria-pressed", String(document.body.classList.contains(mode)));
+
+            button.addEventListener("click", function () {
+                const isActive = !document.body.classList.contains(mode);
+                document.body.classList.toggle(mode, isActive);
+                button.setAttribute("aria-pressed", String(isActive));
+                writeStoredValue(`mf-${mode}`, String(isActive));
+
+                if (mode === "calm-motion") {
+                    window.dispatchEvent(new CustomEvent("mf:motion-changed"));
+                }
+            });
+        });
+    }
+
+    function initPathMemory() {
+        const display = document.querySelector("[data-path-memory]");
+        const savedPath = readStoredValue("mf-path-choice") || document.body.dataset.currentPath;
+
+        updatePathMemory(display, savedPath);
+
+        document.querySelectorAll("[data-path-choice]").forEach(function (choice) {
+            choice.addEventListener("click", function () {
+                const pathName = choice.dataset.pathChoice;
+                if (!pathName) return;
+
+                writeStoredValue("mf-path-choice", pathName);
+                updatePathMemory(display, pathName);
+                setMissionCheckState("choose-path", true);
+            });
+        });
+    }
+
+    function updatePathMemory(display, pathName) {
+        if (!display) {
+            return;
+        }
+
+        display.textContent = pathName ? `Your path: ${pathName}` : display.dataset.defaultText || "Choose a path to begin.";
+    }
+
+    function initMissionChecks() {
+        document.querySelectorAll("[data-mission-check]").forEach(function (button) {
+            const missionId = button.dataset.missionCheck;
+            const isComplete = readStoredValue(`mf-mission-${missionId}`) === "true";
+
+            setMissionButtonState(button, isComplete);
+
+            button.addEventListener("click", function () {
+                setMissionCheckState(missionId, !button.classList.contains("complete"));
+            });
+        });
+    }
+
+    function setMissionCheckState(missionId, isComplete) {
+        if (!missionId) {
+            return;
+        }
+
+        writeStoredValue(`mf-mission-${missionId}`, String(isComplete));
+        document.querySelectorAll(`[data-mission-check="${missionId}"]`).forEach(function (button) {
+            setMissionButtonState(button, isComplete);
+        });
+    }
+
+    function setMissionButtonState(button, isComplete) {
+        button.classList.toggle("complete", isComplete);
+        button.setAttribute("aria-pressed", String(isComplete));
+    }
+
     function fillDateFields() {
         document.querySelectorAll('input[type="date"]').forEach(function (field) {
             if (!field.value && field.name === "date") {
@@ -45,7 +132,7 @@
     function initFadeIns() {
         const animatedItems = document.querySelectorAll("section, article, .panel, .metric, .feature-row");
 
-        if (!animatedItems.length || !("IntersectionObserver" in window)) {
+        if (!animatedItems.length || isMotionCalm() || !("IntersectionObserver" in window)) {
             animatedItems.forEach(function (item) {
                 item.classList.add("show");
             });
@@ -94,8 +181,6 @@
             return;
         }
 
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
         canvases.forEach(function (canvas) {
             const context = canvas.getContext("2d");
             const type = canvas.dataset.liveGraphic || "field";
@@ -113,12 +198,27 @@
             }
 
             resize();
-            window.addEventListener("resize", resize);
+            window.addEventListener("resize", function () {
+                resize();
+                scheduleDraw();
+            });
 
             let start = performance.now();
+            let framePending = false;
+
+            function scheduleDraw() {
+                if (framePending) {
+                    return;
+                }
+
+                framePending = true;
+                requestAnimationFrame(draw);
+            }
 
             function draw(now) {
-                const elapsed = (now - start) / 1000;
+                framePending = false;
+
+                const elapsed = isMotionCalm() ? 0 : (now - start) / 1000;
                 clearCanvas(context, state.width, state.height);
 
                 if (type === "bars") {
@@ -133,13 +233,19 @@
                     drawField(context, state, elapsed, palette);
                 }
 
-                if (!reduceMotion) {
-                    requestAnimationFrame(draw);
+                if (!isMotionCalm()) {
+                    scheduleDraw();
                 }
             }
 
-            requestAnimationFrame(draw);
+            scheduleDraw();
+            window.addEventListener("mf:motion-changed", scheduleDraw);
         });
+    }
+
+    function isMotionCalm() {
+        return document.body.classList.contains("calm-motion") ||
+            window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     }
 
     function getPalette() {
@@ -283,7 +389,7 @@
         });
 
         context.globalAlpha = 1;
-        drawAxisLabels(context, state, ["variance", "signal", "residual"], palette);
+        drawAxisLabels(context, state, ["variance", "pattern", "residual"], palette);
     }
 
     function drawOrbit(context, state, elapsed, palette) {
@@ -347,6 +453,11 @@
             const suffix = metric.dataset.suffix || "";
             const duration = 900;
             const start = performance.now();
+
+            if (isMotionCalm()) {
+                metric.textContent = `${target}${suffix}`;
+                return;
+            }
 
             function tick(now) {
                 const progress = Math.min(1, (now - start) / duration);
@@ -438,5 +549,23 @@
             .replaceAll(">", "&gt;")
             .replaceAll('"', "&quot;")
             .replaceAll("'", "&#039;");
+    }
+
+    function readStoredValue(key) {
+        try {
+            return window.localStorage.getItem(key);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function writeStoredValue(key, value) {
+        try {
+            window.localStorage.setItem(key, value);
+        } catch (error) {
+            return false;
+        }
+
+        return true;
     }
 })();
