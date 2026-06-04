@@ -321,6 +321,13 @@ h3 {
     line-height: 1.28;
 }
 
+h4 {
+    margin: 0;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.35;
+}
+
 .lead {
     max-width: 740px;
     margin: 22px 0 0;
@@ -506,6 +513,109 @@ h3 {
 .grid.three,
 .grid.four {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.journey-column {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025)),
+        var(--panel);
+    padding: 22px;
+}
+
+.journey-column > h3 {
+    margin-bottom: 18px;
+    color: var(--blue-2);
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.journey-list {
+    display: grid;
+    gap: 18px;
+}
+
+.journey-item {
+    border-left: 2px solid var(--line-strong);
+    padding-left: 16px;
+}
+
+.journey-item time {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: var(--blue-2);
+    font-size: 13px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.journey-item p {
+    margin: 6px 0 0;
+    color: var(--muted);
+}
+
+.trait-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.language-list {
+    display: grid;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.language-row {
+    display: grid;
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 14px;
+    align-items: center;
+    color: var(--silver);
+    font-weight: 800;
+}
+
+.language-meter {
+    height: 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.language-meter span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--blue), var(--blue-2));
+}
+
+.contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.contact-list a {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text);
+    padding: 9px 12px;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.contact-list a:hover {
+    border-color: var(--line-strong);
+    color: var(--blue-2);
 }
 
 .panel {
@@ -800,6 +910,7 @@ h3 {
     .mission-panel,
     .next-step-panel,
     .split,
+    .journey-grid,
     .grid.two,
     .grid.three,
     .grid.four {
@@ -842,7 +953,9 @@ h3 {
 
     .form-grid,
     .timeline-item,
-    .spec-row {
+    .spec-row,
+    .trait-grid,
+    .language-row {
         grid-template-columns: 1fr;
     }
 
