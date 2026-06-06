@@ -3,6 +3,8 @@
 (function () {
     "use strict";
 
+    document.documentElement.classList.add("js-enabled");
+
     document.addEventListener("DOMContentLoaded", function () {
         initMobileNav();
         fillDateFields();
