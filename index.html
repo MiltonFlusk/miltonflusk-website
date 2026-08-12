@@ -1,369 +1,726 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Milton Flusk | Academic Support, Quantitative Research & Market Education</title>
-    <meta name="description"
-        content="Milton Flusk is an educator, researcher, and aspiring quantitative professional building analytical thinking through tutoring, research, market education, and community leadership." />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Ccircle%20cx%3D%2750%27%20cy%3D%2750%27%20r%3D%2745%27%20fill%3D%27%2523c9a959%27/%3E%3Cpolygon%20points%3D%275%2C50%2043%2C28%2043%2C72%27%20fill%3D%27%2523070707%27/%3E%3Cpolygon%20points%3D%2795%2C50%2057%2C28%2057%2C72%27%20fill%3D%27%2523070707%27/%3E%3Cline%20x1%3D%2750%27%20y1%3D%2725%27%20x2%3D%2750%27%20y2%3D%2775%27%20stroke%3D%27%2523070707%27%20stroke-width%3D%273%27/%3E%3C/svg%3E" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milton Flusk — Risk / Data Analyst</title>
+  <link href__="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+    ::selection { background: #c9a959; color: white; }
+    body { background: #0a0a0a; color: white; }
+
+    /* ── NAV ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      transition: background 0.5s, border-color 0.5s;
+    }
+    header.scrolled {
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    nav { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 96px;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo img { height: 32px; width: 32px; }
+    .logo span { font-size: 20px; letter-spacing: 0.1em; font-weight: 500; color: white; }
+    .nav-links { display: flex; align-items: center; gap: 48px; }
+    .nav-links a {
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #c9a959; }
+    .nav-links .cta {
+      background: #c9a959; color: black;
+      padding: 12px 24px;
+    }
+    .nav-links .cta:hover { background: rgba(201,169,89,0.9); color: black; }
+    .hamburger {
+      display: none; background: none; border: none;
+      color: white; cursor: pointer; padding: 8px;
+    }
+    .hamburger svg { width: 24px; height: 24px; }
+
+    /* Mobile Drawer */
+    .drawer-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 200;
+    }
+    .drawer {
+      position: fixed; top: 0; left: 0; bottom: 0; width: 288px;
+      background: #0a0a0a; border-right: 1px solid rgba(255,255,255,0.1);
+      z-index: 201; padding: 32px 24px;
+      transform: translateX(-100%); transition: transform 0.3s ease;
+    }
+    .drawer.open { transform: translateX(0); }
+    .drawer-overlay.open { display: block; }
+    .drawer-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 32px;
+    }
+    .drawer-header span { font-size: 18px; letter-spacing: 0.1em; font-weight: 500; }
+    .drawer-close {
+      background: none; border: none; color: rgba(255,255,255,0.6);
+      cursor: pointer;
+    }
+    .drawer-close:hover { color: white; }
+    .drawer-close svg { width: 24px; height: 24px; }
+    .drawer-links { display: flex; flex-direction: column; gap: 0; }
+    .drawer-links a {
+      font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500;
+      padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s;
+    }
+    .drawer-links a:hover { color: #c9a959; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 80px;
+      width: 100%; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    }
+    .hero-label {
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 24px; font-weight: 500;
+    }
+    .hero-name {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 300; line-height: 1.1; letter-spacing: -0.02em;
+    }
+    .hero-name .gold { color: #c9a959; display: block; }
+    .hero-desc {
+      margin-top: 40px; font-size: 18px; color: rgba(255,255,255,0.6);
+      max-width: 420px; line-height: 1.7; font-weight: 300;
+    }
+    .hero-actions { margin-top: 48px; display: flex; align-items: center; gap: 32px; }
+    .btn-primary {
+      background: #c9a959; color: black; border: none;
+      padding: 18px 32px; font-size: 13px; letter-spacing: 0.1em;
+      text-transform: uppercase; font-weight: 500; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 12px;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-primary:hover { background: rgba(201,169,89,0.9); }
+    .btn-primary svg { width: 16px; height: 16px; }
+    .hero-link {
+      font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .hero-link:hover { color: #c9a959; }
+    .hero-image-wrap { position: relative; aspect-ratio: 4/5; }
+    .hero-image-bg { position: absolute; inset: 0; background: rgba(255,255,255,0.05); }
+    .hero-image-wrap img {
+      width: 100%; height: 100%; object-fit: contain; padding: 48px; position: relative;
+    }
+    .hero-deco-1 {
+      position: absolute; bottom: -32px; left: -32px;
+      width: 128px; height: 128px; background: rgba(201,169,89,0.3);
+    }
+    .hero-deco-2 {
+      position: absolute; top: -16px; right: -16px;
+      width: 96px; height: 96px; border: 1px solid rgba(201,169,89,0.3);
+    }
+    .scroll-indicator {
+      position: absolute; bottom: 48px; left: 50%;
+      transform: translateX(-50%);
+    }
+    .scroll-line {
+      width: 1px; height: 64px;
+      background: linear-gradient(to bottom, rgba(201,169,89,0.5), transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.5)} }
+
+    /* ── SECTIONS SHARED ── */
+    section { padding: 128px 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 80px; }
+    .section-label {
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #c9a959; margin-bottom: 16px; font-weight: 500;
+    }
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300; letter-spacing: -0.02em; color: white;
+    }
+    .section-head { margin-bottom: 80px; }
+
+    /* ── SKILLS ── */
+    #skills { background: #0a0a0a; }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 64px 64px;
+    }
+    .skill-card { display: flex; align-items: flex-start; gap: 24px; }
+    .skill-num {
+      color: rgba(255,255,255,0.1); font-size: 48px;
+      font-weight: 300; line-height: 1; flex-shrink: 0;
+    }
+    .skill-body { padding-top: 8px; }
+    .skill-icon { color: #c9a959; margin-bottom: 16px; }
+    .skill-icon svg { width: 24px; height: 24px; }
+    .skill-name { font-size: 20px; font-weight: 300; color: white; margin-bottom: 12px; }
+    .skill-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; font-weight: 300; }
+    .skill-line {
+      margin-top: 16px; height: 1px; width: 0;
+      background: #c9a959; transition: width 0.5s;
+    }
+    .skill-card:hover .skill-line { width: 48px; }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: #080808; }
+    .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .exp-col-title {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 40px;
+    }
+    .exp-col-title svg { width: 20px; height: 20px; color: #c9a959; }
+    .exp-col-title span {
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em;
+      font-weight: 300; color: white;
+    }
+    .exp-items { display: flex; flex-direction: column; gap: 40px; }
+    .exp-item {
+      position: relative; padding-left: 32px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+    }
+    .exp-dot {
+      position: absolute; left: -5px; top: 0;
+      width: 8px; height: 8px; background: #c9a959; border-radius: 50%;
+    }
+    .exp-period {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.4); font-size: 13px; margin-bottom: 8px;
+    }
+    .exp-period svg { width: 12px; height: 12px; }
+    .exp-title { font-size: 18px; font-weight: 300; color: white; margin-bottom: 4px; }
+    .exp-org { font-size: 13px; color: #c9a959; margin-bottom: 12px; }
+    .exp-highlights { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .exp-highlights li {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      font-weight: 300; display: flex; align-items: flex-start; gap: 8px;
+    }
+    .exp-highlights li::before { content: "•"; color: #c9a959; margin-top: 2px; flex-shrink: 0; }
+
+    /* ── ABOUT ── */
+    #about { background: #111111; position: relative; overflow: hidden; }
+    .about-deco {
+      position: absolute; top: 0; right: 0; width: 33%; height: 100%;
+      opacity: 0.02;
+      background-image: radial-gradient(circle at center, rgba(201,169,89,0.3) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-title { font-size: clamp(32px,4vw,48px); font-weight: 300; letter-spacing:-0.02em; line-height:1.15; }
+    .about-text { font-size: 18px; color: rgba(255,255,255,0.6); line-height: 1.7; font-weight: 300; margin-bottom: 32px; }
+    .traits-row {
+      margin-top: 96px; padding-top: 96px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 48px;
+    }
+    .trait-label { font-size: clamp(20px,2.5vw,28px); font-weight: 300; color: #c9a959; }
+    .trait-desc { margin-top: 8px; font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300; letter-spacing: 0.05em; }
+    .langs-row {
+      margin-top: 64px; padding-top: 64px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .lang-item { margin-bottom: 16px; }
+    .lang-name { font-weight: 300; margin-bottom: 8px; }
+    .lang-bar { width: 128px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden; }
+    .lang-fill { height: 100%; background: #c9a959; }
+    .langs-wrap { display: flex; flex-wrap: wrap; gap: 32px; }
+
+    /* ── CONTACT ── */
+    #contact { background: #0a0a0a; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-info-title { font-size: clamp(28px,3.5vw,44px); font-weight: 300; letter-spacing:-0.02em; line-height:1.15; margin-bottom: 32px; }
+    .contact-sub { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; line-height: 1.6; max-width: 400px; margin-bottom: 48px; }
+    .contact-detail {
+      display: flex; align-items: center; gap: 16px;
+      color: rgba(255,255,255,0.6); margin-bottom: 24px; text-decoration: none;
+      font-weight: 300; transition: color 0.2s;
+    }
+    .contact-detail:hover { color: #c9a959; }
+    .contact-detail svg { width: 20px; height: 20px; color: #c9a959; flex-shrink: 0; }
+    .contact-form { background: #141414; padding: 56px; }
+    .form-group { margin-bottom: 32px; }
+    .form-label {
+      display: block; font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+      font-weight: 500; margin-bottom: 12px;
+    }
+    .form-input, .form-textarea {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding: 12px 0; color: white; font-size: 16px;
+      font-family: 'Inter', sans-serif; font-weight: 300;
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-input:focus, .form-textarea:focus { border-bottom-color: #c9a959; }
+    .form-textarea { resize: none; }
+    .btn-submit {
+      width: 100%; background: #c9a959; color: black; border: none;
+      padding: 24px; font-size: 13px; letter-spacing: 0.1em;
+      text-transform: uppercase; font-weight: 500; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: rgba(201,169,89,0.9); }
+    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+    .btn-submit svg { width: 16px; height: 16px; }
+    .success-state {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; text-align: center; padding: 48px 0;
+    }
+    .success-state svg { width: 64px; height: 64px; color: #c9a959; margin-bottom: 24px; }
+    .success-state h3 { font-size: 24px; font-weight: 300; margin-bottom: 12px; }
+    .success-state p { color: rgba(255,255,255,0.6); font-weight: 300; }
+    .btn-again {
+      margin-top: 32px; background: transparent; border: 1px solid rgba(255,255,255,0.2);
+      color: white; padding: 16px 32px; font-size: 13px; letter-spacing: 0.1em;
+      text-transform: uppercase; font-weight: 500; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-again:hover { background: rgba(255,255,255,0.1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080808; border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 64px 0;
+    }
+    .footer-inner {
+      max-width: 1280px; margin: 0 auto; padding: 0 80px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px;
+    }
+    .footer-copy { margin-top: 8px; font-size: 14px; color: rgba(255,255,255,0.4); font-weight: 300; }
+    .footer-links { display: flex; align-items: center; gap: 32px; }
+    .footer-links a {
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); text-decoration: none; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #c9a959; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      nav, .container, .footer-inner { padding: 0 48px; }
+      .hero-inner { padding: 0 48px; }
+      .hero-image-wrap { display: none; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .exp-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .traits-row { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      nav, .container, .footer-inner { padding: 0 24px; }
+      .hero-inner { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: block; }
+      .skills-grid { grid-template-columns: 1fr; }
+      section { padding: 80px 0; }
+      .traits-row { grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 64px; padding-top: 64px; }
+      .contact-form { padding: 32px; }
+      .nav-inner { height: 72px; }
+    }
+  </style>
 </head>
-
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <header class="site-header">
-        <div class="shell site-nav">
-            <a class="brand" href="index.html" aria-label="Milton Flusk home">
-                <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-                    <circle class="mark-ring" cx="50" cy="50" r="43"></circle>
-                    <polygon class="mark-left" points="7,50 43,29 43,71"></polygon>
-                    <polygon class="mark-right" points="93,50 57,29 57,71"></polygon>
-                    <rect class="mark-line" x="49" y="27" width="2.5" height="46"></rect>
-                </svg>
-                <span>Milton<span>Flusk</span></span>
-            </a>
-            <nav class="nav-links" data-nav-links aria-label="Primary navigation">
-                <a href="tutoring/index.html">Tutoring</a>
-                <a href="research/index.html">Research</a>
-                <a href="market-lab/index.html">Market Lab</a>
-                <a href="portfolio/index.html">Portfolio</a>
-                <a href="disclosures/index.html">Disclosures</a>
-            </nav>
-            <a class="nav-cta" href="#contact">Contact</a>
-            <button class="mobile-toggle" type="button" data-mobile-toggle aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span></span><span></span><span></span>
-            </button>
+<!-- HEADER -->
+<header id="site-header">
+  <nav>
+    <div class="nav-inner">
+      <a href__="#" class="logo">
+        <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6979091bc2b1e1039aeefd06/f8d5927c6_BeigeWhiteAestheticSimpleMinimalistInvoice.png" alt="Milton Flusk Logo"/>
+        <span>Milton Flusk.</span>
+      </a>
+      <div class="nav-links">
+        <a href__="#skills">Skills</a>
+        <a href__="#experience">Experience</a>
+        <a href__="#about">About</a>
+        <a href__="#contact" class="cta">Contact</a>
+      </div>
+      <button class="hamburger" onclick="toggleDrawer()" aria-label="Open menu">
+        <svg id="hamburger-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<div class="drawer" id="mobile-drawer">
+  <div class="drawer-header">
+    <span>Menu</span>
+    <button class="drawer-close" onclick="toggleDrawer()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="drawer-links">
+    <a href__="#" onclick="toggleDrawer()">Home</a>
+    <a href__="#skills" onclick="toggleDrawer()">Skills</a>
+    <a href__="#experience" onclick="toggleDrawer()">Experience</a>
+    <a href__="#about" onclick="toggleDrawer()">About</a>
+    <a href__="#contact" onclick="toggleDrawer()">Contact</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <p class="hero-label">Risk / Data Analyst</p>
+      <h1 class="hero-name">
+        Milton
+        <span class="gold">Flusk</span>
+      </h1>
+      <p class="hero-desc">
+        Quantitative Finance graduate with strong analytical thinking and a genuine interest in data-driven decision-making. Solution-oriented, collaborative, and committed to continuous professional growth.
+      </p>
+      <div class="hero-actions">
+        <a href__="#contact" class="btn-primary">
+          Get in Touch
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href__="https://www.linkedin.com/in/milton-luke-flusk" target="_blank" class="hero-link">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-image-bg"></div>
+      <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6979091bc2b1e1039aeefd06/f8d5927c6_BeigeWhiteAestheticSimpleMinimalistInvoice.png" alt="Milton Flusk Logo"/>
+      <div class="hero-deco-1"></div>
+      <div class="hero-deco-2"></div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-line"></div></div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label">Core Competencies</p>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-num">01</span>
+        <div class="skill-body">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44L7 19V5a2.5 2.5 0 0 1 2.5-2.5Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44L17 19V5a2.5 2.5 0 0 0-2.5-2.5Z"/></svg></div>
+          <h3 class="skill-name">Analytical Thinking</h3>
+          <p class="skill-desc">Analyze complex systems, identify inefficiencies, and solve problems effectively with data-driven approaches.</p>
+          <div class="skill-line"></div>
         </div>
-    </header>
-
-    <main class="page-main" id="main-content">
-        <section class="shell hero brand-hero">
-            <div class="hero-copy">
-                <p class="eyebrow">Educator / Researcher / Aspiring Quantitative Professional</p>
-                <h1>Building analytical thinking through mathematics, research, and market education.</h1>
-                <p class="lead">
-                    Milton Flusk teaches Mathematics and Physical Sciences, studies Quantitative Finance, builds
-                    educational technology projects, and uses community leadership to keep the work human.
-                </p>
-                <div class="actions">
-                    <a class="btn" href="tutoring/index.html">Academic Support</a>
-                    <a class="btn-secondary" href="research/index.html">Research Direction</a>
-                    <a class="btn-secondary" href="market-lab/index.html">Market Education</a>
-                </div>
-                <div class="hero-points" aria-label="Service strengths">
-                    <span>Mathematics tutor</span>
-                    <span>Physical Sciences tutor</span>
-                    <span>Quantitative Finance student</span>
-                    <span>Community football organizer</span>
-                </div>
-            </div>
-
-            <aside class="performance-panel service-snapshot" aria-label="Milton Flusk brand summary">
-                <p class="eyebrow">Brand summary</p>
-                <h2>Education, analysis, and character in one platform.</h2>
-                <div class="spec-grid">
-                    <div class="spec-row">
-                        <span>Teaches</span>
-                        <span>Mathematics and Physical Sciences with structured accountability</span>
-                    </div>
-                    <div class="spec-row">
-                        <span>Studies</span>
-                        <span>Quantitative Finance, statistics, risk, modelling, operations research</span>
-                    </div>
-                    <div class="spec-row">
-                        <span>Builds</span>
-                        <span>Research notes, data projects, and paper-only market education tools</span>
-                    </div>
-                    <div class="spec-row">
-                        <span>Leads</span>
-                        <span>Mentorship and community football with consistency and responsibility</span>
-                    </div>
-                </div>
-            </aside>
-        </section>
-
-        <section class="shell section intro-band" id="identity">
-            <div class="section-head">
-                <p class="eyebrow">Positioning</p>
-                <h2>An educator, researcher, and aspiring quantitative professional.</h2>
-                <p>
-                    The site connects the work Milton is doing now with the direction he is building toward: effective
-                    tutoring, disciplined research, responsible market education, and visible community contribution.
-                </p>
-            </div>
-            <div class="identity-strip" aria-label="Milton Flusk identity markers">
-                <span>BSc Quantitative Finance student</span>
-                <span>Mathematics and Physical Sciences tutor</span>
-                <span>Educational technology builder</span>
-                <span>Mentor and community organizer</span>
-            </div>
-        </section>
-
-        <section class="shell section" id="services">
-            <div class="section-head">
-                <p class="eyebrow">Four connected pillars</p>
-                <h2>One brand, four useful ways in.</h2>
-                <p>
-                    Parents, students, recruiters, and market-education visitors should quickly find the part of the
-                    work that matters to them.
-                </p>
-            </div>
-
-            <div class="grid four">
-                <article class="panel accent path-card">
-                    <div>
-                        <div class="path-topline">
-                            <span class="tag">Academic Support</span>
-                        </div>
-                        <h3>Structured tutoring</h3>
-                        <p>
-                            Mathematics and Physical Sciences support built around concept repair, exam preparation,
-                            accountability, and parent-friendly feedback.
-                        </p>
-                    </div>
-                    <a class="btn-secondary" href="tutoring/index.html">Tutoring details</a>
-                </article>
-
-                <article class="panel path-card">
-                    <div>
-                        <div class="path-topline">
-                            <span class="tag">Research</span>
-                        </div>
-                        <h3>Quantitative direction</h3>
-                        <p>
-                            Statistics, risk analysis, data engineering, Python, modelling, operations research, and
-                            finance-related problem solving.
-                        </p>
-                    </div>
-                    <a class="btn-secondary" href="research/index.html">Research themes</a>
-                </article>
-
-                <article class="panel path-card">
-                    <div>
-                        <div class="path-topline">
-                            <span class="tag">Market Education</span>
-                        </div>
-                        <h3>Index Market Lab</h3>
-                        <p>
-                            A future learning product for market structure, index behaviour, risk awareness, and
-                            paper-only practice. No signals or trade recommendations.
-                        </p>
-                    </div>
-                    <a class="btn-secondary" href="market-lab/index.html">Market Lab</a>
-                </article>
-
-                <article class="panel path-card">
-                    <div>
-                        <div class="path-topline">
-                            <span class="tag">Community</span>
-                        </div>
-                        <h3>Leadership in practice</h3>
-                        <p>
-                            Football organizing, mentoring, and community involvement that show discipline, trust, and
-                            real-world responsibility beyond coursework.
-                        </p>
-                    </div>
-                    <a class="btn-secondary" href="#community">Community work</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="shell section split" id="academic-support">
-            <div>
-                <p class="eyebrow">Academic Support</p>
-                <h2>Clear explanations, consistent practice, and visible accountability.</h2>
-                <p class="lead">
-                    Tutoring is not positioned as a side note. It is the current service foundation: practical support
-                    for learners who need structure, confidence, and better exam preparation.
-                </p>
-                <div class="actions">
-                    <a class="btn" href="tutoring/index.html">View tutoring</a>
-                    <a class="btn-secondary" href="tutoring-registration/index.html">Registration form</a>
-                </div>
-            </div>
-            <div class="feature-list">
-                <div class="feature-row">
-                    <div class="feature-index">01</div>
-                    <div>
-                        <h3>Mathematics and Physical Sciences</h3>
-                        <p>CAPS-aware support for core problem-solving, theory, exam-style questions, and revision.</p>
-                    </div>
-                </div>
-                <div class="feature-row">
-                    <div class="feature-index">02</div>
-                    <div>
-                        <h3>Accountability that parents can read</h3>
-                        <p>Progress is framed around effort, technical gaps, homework, and the next focus area.</p>
-                    </div>
-                </div>
-                <div class="feature-row">
-                    <div class="feature-index">03</div>
-                    <div>
-                        <h3>Confidence through structure</h3>
-                        <p>Learners get a repeatable rhythm: baseline, explanation, practice, feedback, review.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="shell section split" id="research-preview">
-            <div>
-                <p class="eyebrow">Quantitative Research</p>
-                <h2>Building technical evidence for a quantitative finance path.</h2>
-                <p class="lead">
-                    Research gives recruiters and collaborators a clearer signal: what Milton is studying, what tools
-                    he is developing, and how he thinks through uncertainty.
-                </p>
-            </div>
-            <div class="focus-grid">
-                <span>Statistics</span>
-                <span>Risk analysis</span>
-                <span>Data engineering</span>
-                <span>Python</span>
-                <span>Modelling</span>
-                <span>Operations research</span>
-                <span>Financial markets</span>
-                <span>Decision support</span>
-            </div>
-        </section>
-
-        <section class="shell section split" id="market-education">
-            <div>
-                <p class="eyebrow">Market Education</p>
-                <h2>Research-driven learning, not trading performance theatre.</h2>
-                <p class="lead">
-                    Index Market Lab is positioned as a future educational product for understanding market structure,
-                    index behaviour, risk language, and paper-only decision records.
-                </p>
-                <div class="actions">
-                    <a class="btn-secondary" href="market-lab/index.html">Explore Market Lab</a>
-                    <a class="btn-secondary" href="disclosures/index.html">Read disclosures</a>
-                </div>
-            </div>
-            <div class="panel">
-                <span class="tag red">Safety boundary</span>
-                <h3>Education only. Paper practice only.</h3>
-                <p>
-                    The site does not present Milton as a professional trader. Market content stays general,
-                    educational, research-driven, and explicit about risk and limits.
-                </p>
-            </div>
-        </section>
-
-        <section class="shell section split" id="community">
-            <div>
-                <p class="eyebrow">Community Leadership</p>
-                <h2>Football, mentorship, and the human side of the brand.</h2>
-                <p class="lead">
-                    Community work matters because analytical ability is stronger when it is paired with trust,
-                    consistency, and responsibility. Milton's football involvement reflects organization, mentorship,
-                    and presence with people.
-                </p>
-            </div>
-            <div class="grid two compact-grid">
-                <article class="panel">
-                    <span class="tag">Leadership</span>
-                    <h3>Organizing people around a shared rhythm</h3>
-                    <p>Community football requires planning, communication, accountability, and a steady hand.</p>
-                </article>
-                <article class="panel">
-                    <span class="tag">Mentorship</span>
-                    <h3>Helping people show up and improve</h3>
-                    <p>The same patience used in tutoring carries into community spaces and team environments.</p>
-                </article>
-                <article class="panel">
-                    <span class="tag">Character</span>
-                    <h3>Visible consistency outside the classroom</h3>
-                    <p>The brand should feel like a real person is behind it, not only a list of technical claims.</p>
-                </article>
-                <article class="panel">
-                    <span class="tag">Story</span>
-                    <h3>Authentic lifestyle and visual culture</h3>
-                    <p>Photography, football, and everyday leadership keep the platform human and grounded.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="shell section" id="portfolio-proof">
-            <div class="grid two">
-                <article class="panel">
-                    <span class="tag">Portfolio proof</span>
-                    <h3>Technical work with a method.</h3>
-                    <p>
-                        The portfolio should show how projects are framed: problem, solution, tools, outcome, and
-                        lessons learned.
-                    </p>
-                    <a class="btn-secondary" href="portfolio/index.html">View portfolio</a>
-                </article>
-                <article class="panel">
-                    <span class="tag">Direction</span>
-                    <h3>Built for disciplined analytical growth.</h3>
-                    <p>
-                        The strongest version of MiltonFlusk.com is not a trading dashboard. It is a professional
-                        learning, research, and community platform.
-                    </p>
-                    <a class="btn-secondary" href="research/index.html">View research</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="shell section split" id="contact">
-            <div>
-                <p class="eyebrow">Contact</p>
-                <h2>Start with the reason you are here.</h2>
-                <p class="lead">
-                    Reach out for tutoring, research discussion, portfolio opportunities, community collaboration, or
-                    responsible market-education enquiries.
-                </p>
-                <div class="contact-list">
-                    <a href="mailto:info@miltonflusk.com">info@miltonflusk.com</a>
-                    <a href="mailto:miltonflusk@gmail.com">miltonflusk@gmail.com</a>
-                    <a href="https://www.linkedin.com/in/milton-luke-flusk" target="_blank"
-                        rel="noreferrer">LinkedIn</a>
-                    <a href="https://www.instagram.com/miltonflusk" target="_blank" rel="noreferrer">Instagram</a>
-                </div>
-            </div>
-            <form name="homepage-contact" method="POST" data-netlify="true" class="panel form-grid">
-                <input type="hidden" name="form-name" value="homepage-contact" />
-                <div class="field">
-                    <label for="contact-name">Name</label>
-                    <input id="contact-name" name="name" type="text" autocomplete="name" required />
-                </div>
-                <div class="field">
-                    <label for="contact-email">Email</label>
-                    <input id="contact-email" name="email" type="email" autocomplete="email" required />
-                </div>
-                <div class="field full">
-                    <label for="contact-message">Message</label>
-                    <textarea id="contact-message" name="message"
-                        placeholder="Example: Grade 11 Physical Sciences support, research collaboration, portfolio request, or Market Lab education enquiry." required></textarea>
-                </div>
-                <div class="field full">
-                    <button class="btn" type="submit">Send Enquiry</button>
-                </div>
-            </form>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="shell footer-inner">
-            <p>&copy; 2026 Milton Flusk. Academic support, research, and education.</p>
-            <nav class="footer-links" aria-label="Footer navigation">
-                <a href="tutoring/index.html">Tutoring</a>
-                <a href="research/index.html">Research</a>
-                <a href="portfolio/index.html">Portfolio</a>
-                <a href="market-lab/index.html">Market Lab</a>
-                <a href="disclosures/index.html">Disclosures</a>
-            </nav>
+      </div>
+      <div class="skill-card">
+        <span class="skill-num">02</span>
+        <div class="skill-body">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <h3 class="skill-name">Quantitative Finance</h3>
+          <p class="skill-desc">Strong foundation in risk analysis, asset management, and financial modeling from academic studies.</p>
+          <div class="skill-line"></div>
         </div>
-    </footer>
+      </div>
+      <div class="skill-card">
+        <span class="skill-num">03</span>
+        <div class="skill-body">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 class="skill-name">Leadership &amp; Collaboration</h3>
+          <p class="skill-desc">Experienced in team management, mentoring, and fostering productive learning environments.</p>
+          <div class="skill-line"></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-num">04</span>
+        <div class="skill-body">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3 class="skill-name">Communication</h3>
+          <p class="skill-desc">Effective written and verbal communication skills with ability to simplify complex concepts.</p>
+          <div class="skill-line"></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-num">05</span>
+        <div class="skill-body">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3 class="skill-name">Strategic Thinking</h3>
+          <p class="skill-desc">Goal-oriented approach with focus on continuous improvement and professional growth.</p>
+          <div class="skill-line"></div>
+        </div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-num">06</span>
+        <div class="skill-body">
+          <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.5-1.3 4.7-3.3 6H8.3A6.96 6.96 0 0 1 5 9a7 7 0 0 1 7-7Z"/></svg></div>
+          <h3 class="skill-name">Adaptability</h3>
+          <p class="skill-desc">Multitasking abilities with capacity to work independently, remotely, and adapt to new challenges.</p>
+          <div class="skill-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="js/script.js"></script>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-head">
+      <p class="section-label">Professional Journey</p>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="exp-grid">
+      <!-- Work -->
+      <div>
+        <div class="exp-col-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          <span>Work Experience</span>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2022 – 2025</div>
+            <h4 class="exp-title">Senior-Phase Maths &amp; Science Tutor</h4>
+            <p class="exp-org">Private Tutoring</p>
+            <ul class="exp-highlights">
+              <li>Managed group tutoring sessions for up to 10 individuals</li>
+              <li>Provided personalized tutoring in Mathematics and Physics</li>
+              <li>Collaborated with team of tutors supporting grades 4–12</li>
+            </ul>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2021</div>
+            <h4 class="exp-title">Retail Assembly – Packer/Picker</h4>
+            <p class="exp-org">CJ Distribution – Dischem Regional Warehouse</p>
+            <ul class="exp-highlights">
+              <li>Assembled boxes and packed warehouse orders</li>
+              <li>Ensured accuracy in distribution processes</li>
+              <li>Demonstrated efficiency in order fulfilment</li>
+            </ul>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2019</div>
+            <h4 class="exp-title">Facilitator</h4>
+            <p class="exp-org">Western Cape Education Department</p>
+            <ul class="exp-highlights">
+              <li>Facilitated rehabilitation process for disabled children</li>
+              <li>Provided feedback working with psychologists and occupational therapists</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Education -->
+      <div>
+        <div class="exp-col-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span>Education</span>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2023 – Present (Final Year)</div>
+            <h4 class="exp-title">BCom – Quantitative Finance</h4>
+            <p class="exp-org">University of South Africa</p>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2018</div>
+            <h4 class="exp-title">BCom – Quantitative Finance</h4>
+            <p class="exp-org">University of Cape Town</p>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>2016 – 2017</div>
+            <h4 class="exp-title">BSc – Civil Engineering</h4>
+            <p class="exp-org">University of Cape Town</p>
+          </div>
+          <div class="exp-item">
+            <div class="exp-dot"></div>
+            <div class="exp-period"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Class of 2015</div>
+            <h4 class="exp-title">Grade 12</h4>
+            <p class="exp-org">Claremont High School, South Africa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-deco"></div>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="about-grid">
+      <div>
+        <p class="section-label">About Me</p>
+        <h2 class="about-title">Driven by data, guided by values</h2>
+      </div>
+      <div>
+        <p class="about-text">I am committed to maintaining a healthy lifestyle both personally and professionally. My values guide my ethical decision-making, and I am highly motivated with a strong focus on continuous skill development and professional growth.</p>
+        <p class="about-text" style="margin-bottom:0;">My professional journey has been shaped by perseverance and steady growth. While I may be a later entrant to the field, this path has strengthened my resilience, discipline, and commitment to continuous improvement.</p>
+      </div>
+    </div>
+    <div class="traits-row">
+      <div><span class="trait-label">Integrity</span><p class="trait-desc">Ethical decision-making</p></div>
+      <div><span class="trait-label">Reliability</span><p class="trait-desc">Dependable &amp; accountable</p></div>
+      <div><span class="trait-label">Growth</span><p class="trait-desc">Continuous improvement</p></div>
+      <div><span class="trait-label">Collaboration</span><p class="trait-desc">Team-oriented approach</p></div>
+    </div>
+    <div class="langs-row">
+      <p class="section-label">Languages</p>
+      <div class="langs-wrap">
+        <div class="lang-item">
+          <p class="lang-name">English</p>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-item">
+          <p class="lang-name">Afrikaans</p>
+          <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label">Get in Touch</p>
+        <h2 class="contact-info-title">Let's create something extraordinary together</h2>
+        <p class="contact-sub">We're selective about the projects we take on, ensuring each receives the attention and dedication it deserves.</p>
+        <a href__="mailto:miltonflusk@gmail.com" class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          miltonflusk@gmail.com
+        </a>
+        <a href__="tel:+27716488817" class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.64 12 19.79 19.79 0 0 1 1.55 3.18 2 2 0 0 1 3.55 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          +27 71 648 8817
+        </a>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          Cape Town, Western Cape
+        </div>
+      </div>
+
+      <div class="contact-form" id="contact-form-wrap">
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-input" id="name" type="text" required placeholder="John Smith"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" id="email" type="email" required placeholder="john@example.com"/>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Tell Us About Your Project</label>
+            <textarea class="form-textarea" id="message" rows="4" required placeholder="I'm looking for..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit" id="submit-btn">
+            Send Inquiry
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href__="#" class="logo">
+        <img src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6979091bc2b1e1039aeefd06/f8d5927c6_BeigeWhiteAestheticSimpleMinimalistInvoice.png" alt="Milton Flusk Logo"/>
+        <span>Milton Flusk.</span>
+      </a>
+      <p class="footer-copy">© 2026 Milton Flusk. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href__="https://www.instagram.com/miltonflusk" target="_blank">Instagram</a>
+      <a href__="https://www.linkedin.com/in/milton-luke-flusk" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll header
+  window.addEventListener('scroll', () => {
+    document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Mobile drawer
+  function toggleDrawer() {
+    document.getElementById('mobile-drawer').classList.toggle('open');
+    document.getElementById('drawer-overlay').classList.toggle('open');
+  }
+
+  // Contact form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.innerHTML = `<svg style="width:16px;height:16px;animation:spin 1s linear infinite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Sending...`;
+
+    // Simulate send delay (replace with your backend call if needed)
+    setTimeout(() => {
+      document.getElementById('contact-form-wrap').innerHTML = `
+        <div class="success-state">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <h3>Thank You!</h3>
+          <p>Your inquiry has been sent. I'll get back to you soon.</p>
+          <button class="btn-again" onclick="resetForm()">Send Another</button>
+        </div>`;
+    }, 1500);
+  }
+
+  function resetForm() {
+    document.getElementById('contact-form-wrap').innerHTML = `
+      <form id="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="name">Your Name</label>
+          <input class="form-input" id="name" type="text" required placeholder="John Smith"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" id="email" type="email" required placeholder="john@example.com"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Tell Us About Your Project</label>
+          <textarea class="form-textarea" id="message" rows="4" required placeholder="I'm looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit" id="submit-btn">
+          Send Inquiry
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>`;
+  }
+</script>
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 </body>
-
 </html>
